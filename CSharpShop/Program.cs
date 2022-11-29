@@ -63,10 +63,10 @@ Console.WriteLine("------------------- Prodotto ---------------------\n");
 Console.WriteLine("Codice: \t\t" + $"{prodotto.GetCodice():00000000}");
 Console.WriteLine("Nome: \t\t\t" + prodotto.GetNome());
 Console.WriteLine("Descrizione: \t\t" + prodotto.GetDescrizione());
-Console.WriteLine("Prezzo senza IVA: \t" + $"{prodotto.GetPrezzo():0.##}" + " €");
-Console.WriteLine("IVA: \t\t\t" + prodotto.GetIva() + " %");
+Console.WriteLine("Prezzo senza IVA: \t" + $"{prodotto.GetPrezzo():0.##}" + "€");
+Console.WriteLine("IVA: \t\t\t" + prodotto.GetIva() + "%");
 prezzoConIva = prodotto.CalcoloPrezzoConIva(prezzo, iva);
-Console.WriteLine("Prezzo con IVA: \t" + $"{prezzoConIva:0.##}" + " €");
+Console.WriteLine("Prezzo con IVA: \t" + $"{prezzoConIva:0.##}" + "€");
 Console.WriteLine("\n--------------------------------------------------");
 
 
