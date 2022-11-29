@@ -54,4 +54,4 @@ do
 
 prodotto = new Articoli(codice, nome, descrizione, prezzo, iva);
 
-Console.WriteLine(prodotto);
+Console.WriteLine(prodotto.GetCodice());
