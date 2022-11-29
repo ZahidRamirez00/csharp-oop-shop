@@ -11,7 +11,7 @@ namespace CSharpShop
         private int codice;
         private string nome;
         private string descrizione;
-        private int prezzo;
+        private float prezzo;
         private int iva;
 
         public int GetCodice()
@@ -44,7 +44,7 @@ namespace CSharpShop
             this.descrizione = Descrizione;
         }
 
-        public int GetPrezzo()
+        public float GetPrezzo()
         {
             return this.prezzo;
         }
@@ -65,13 +65,21 @@ namespace CSharpShop
         }
 
         // Costuttore che definisco IO e che usa il concetto di OVERLOAD
-        public Articoli(int Codice, string Nome, string Descrizione, int Prezzo, int Iva)
+        public Articoli(int Codice, string Nome, string Descrizione, float Prezzo, int Iva)
         {
             this.codice = Codice;
             this.nome = Nome;
             this.descrizione = Descrizione;
             this.prezzo = Prezzo;
             this.iva = Iva;
+        }
+
+        public float CalcoloPrezzoConIva(float prezzo, int iva)
+        {
+            float prezzoConIva = (prezzo * iva) / 100;
+            prezzoConIva += prezzo;
+
+            return prezzoConIva;
         }
 
     }

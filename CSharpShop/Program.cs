@@ -6,10 +6,11 @@ string myString = "";
 int codice;
 string nome;
 string descrizione = "";
-int prezzo;
+float prezzo = 0;
 int iva;
+float prezzoConIva;
 bool controllo;
-
+Console.OutputEncoding = System.Text.Encoding.UTF8;
 Random codiceRandom = new Random();
 codice = codiceRandom.Next(1, 99999999);
 
@@ -23,9 +24,12 @@ Console.Write("Inserisci il prezzo del prodotto: ");
 do
 {
     myString = Console.ReadLine();
-    if (int.TryParse(myString, out prezzo) )
+    //LimitDecimalPlace(myString, 2);
+
+    if(float.TryParse(myString, out prezzo))
     {
         controllo = true;
+        //Console.WriteLine("Il prezzo è: " + $"{prezzo:0.##}" + "\n");
     }
     else
     {
@@ -54,4 +58,36 @@ do
 
 prodotto = new Articoli(codice, nome, descrizione, prezzo, iva);
 
-Console.WriteLine(prodotto.GetCodice());
+
+Console.WriteLine("------------------- Prodotto ---------------------\n");
+Console.WriteLine("Codice: \t\t" + $"{prodotto.GetCodice():00000000}");
+Console.WriteLine("Nome: \t\t\t" + prodotto.GetNome());
+Console.WriteLine("Descrizione: \t\t" + prodotto.GetDescrizione());
+Console.WriteLine("Prezzo senza IVA: \t" + $"{prodotto.GetPrezzo():0.##}" + " €");
+Console.WriteLine("IVA: \t\t\t" + prodotto.GetIva() + " %");
+prezzoConIva = prodotto.CalcoloPrezzoConIva(prezzo, iva);
+Console.WriteLine("Prezzo con IVA: \t" + $"{prezzoConIva:0.##}" + " €");
+Console.WriteLine("\n--------------------------------------------------");
+
+
+
+
+
+
+
+void LimitDecimalPlace(string number, int limitPlace)
+{
+    float result = 0;
+    string sNumber = number;
+    int decimalIndex = sNumber.IndexOf(".");
+    Console.WriteLine(decimalIndex);
+    if (decimalIndex != -1)
+    {
+        sNumber = sNumber.Remove(decimalIndex + limitPlace + 1);
+    }
+
+    result = float.Parse(sNumber);
+    result = float.Parse(number);
+    Console.WriteLine(result);
+
+}
